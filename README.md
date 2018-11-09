@@ -1,2 +1,12 @@
 # threat-hunting-with-notebooks
-Reposistory with Sample threat hunting notebooks on Security Event Log Data Sources
+
+Demo files associated with "Threat Hunting with Notebook technologies" presented at Secureworld conferernce in Seattle, WA 
+
+**Basic Data Analysis and Visualization on Failed Logon Data**
+ - Data Source : Azure Data Explorer
+ - Language: Python
+
+<br>**Time series anomaly detection on successful logon data using anomalize package**
+ - Data Source : Azure Data Lake
+ - Language: R
+
