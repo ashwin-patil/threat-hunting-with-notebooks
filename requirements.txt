@@ -1,0 +1,2 @@
+msticpy>=0.4.0
+statsmodels==0.11.1
