@@ -40,3 +40,6 @@ Same repo can be cloned directly from my azure notebooks account:
 
 <br>**Open Source Threat Intel Lookup using requests** :: [nbviewer](https://nbviewer.jupyter.org/github/ashwin-patil/threat-hunting-with-notebooks/blob/master/Open%20Source%20Threat%20Intel%20lookup%20using%20Requests%20API.ipynb)
  - Language: Python
+
+<br>**Anomaly detection and visualization using Time Series Decomposition** :: [nbviewer](https://nbviewer.jupyter.org/github/ashwin-patil/threat-hunting-with-notebooks/blob/master/Jupyterthon-TimeSeries%20Demo.ipynb)
+ - Language: Python
