@@ -9,15 +9,6 @@ Github jupyter notebook viewer does not parse well, use online services such as 
 
 ## Launch Azure Notebooks
 
-Requires sign-in to Azure Notebooks
-
-<a href="https://notebooks.azure.com/import/gh/ashwin-patil/threat-hunting-with-notebooks">
-<img src="https://notebooks.azure.com/launch.png" />
-</a>
-
-Same repo can be cloned directly from my azure notebooks account: 
-<br> https://notebooks.azure.com/ashwinrp/projects/threat-hunting-with-notebooks
-
 ## Launch Binder
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ashwin-patil/threat-hunting-with-notebooks.git/master)
 
