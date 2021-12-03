@@ -7,8 +7,6 @@ Presentation: https://www.slideshare.net/ashwin_patil/threat-hunting-using-noteb
 
 Github jupyter notebook viewer does not parse well, use online services such as [nbviewer](https://nbviewer.jupyter.org), [mybinder](https://mybinder.org/), [https://notebooks.azure.com]() free computer to view and interact with notebooksby providing github notebook/repo URL.
 
-## Launch Azure Notebooks
-
 ## Launch Binder
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ashwin-patil/threat-hunting-with-notebooks.git/master)
 
